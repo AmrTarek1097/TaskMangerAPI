@@ -36,13 +36,14 @@
         [HttpPost]
         public async Task<IActionResult> CreateTask(TaskDto dto)
         {
+            var memberId = await _context.TeamMembers.SingleOrDefaultAsync(m => m.TeamMemberId == dto.TeamMemberId);
             if (dto.Name == null)
                 return BadRequest("Name is Required!");
 
             if (dto.Description == null)
                 return BadRequest("Description is Required!");
 
-            if (dto.TeamMemberId == null || dto.TeamMemberId <= 0)
+            if (dto.TeamMemberId == null || dto.TeamMemberId <= 0 || memberId == null)
                 return BadRequest("Team member not exist!");
 
             var task = new MemberTask

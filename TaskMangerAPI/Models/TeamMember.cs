@@ -1,4 +1,7 @@
-﻿namespace TaskManagerAPI.Models
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+namespace TaskManagerAPI.Models
 {
     public class TeamMember
     {
@@ -15,6 +18,7 @@
         [DefaultValue("example@domain.com")]
         public string Email { get; set; }
 
-        //public ICollection<MemberTask> Tasks { get; set; } = new List<MemberTask>();
+        [JsonIgnore]
+        public ICollection<MemberTask> Tasks { get; set; } = new List<MemberTask>();
     }
 }

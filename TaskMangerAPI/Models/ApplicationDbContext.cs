@@ -9,15 +9,15 @@
         public DbSet<MemberTask> Tasks { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
 
-        //    modelBuilder.Entity<MemberTask>()
-        //        .HasOne(t => t.TeamMember)
-        //        .WithMany(m => m.Tasks)
-        //        .HasForeignKey(t => t.TeamMemberId)
-        //        .OnDelete(DeleteBehavior.Cascade);
-        //}
+            modelBuilder.Entity<MemberTask>()
+                .HasOne(t => t.TeamMember)
+                .WithMany(m => m.Tasks)
+                .HasForeignKey(t => t.TeamMemberId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
 
     }
 }

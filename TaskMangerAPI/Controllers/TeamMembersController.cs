@@ -18,7 +18,7 @@ namespace TaskManagerAPI.Controllers
         public async Task<IActionResult> GetAllTeamMember()
         {
             var members = await _context.TeamMembers
-           .OrderByDescending(m => m.Name)
+          
            .ToListAsync();
             return Ok(members);
         }
